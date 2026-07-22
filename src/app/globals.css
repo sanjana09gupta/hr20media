@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  HR20MEDIA — warm-pastel × anime.js technical blueprint            */
+/* ------------------------------------------------------------------ */
+
+:root {
+  /* muted warm-pastel surfaces */
+  --sand: #e7e0d2;
+  --oat: #efe8da;
+  --paper: #f6f1e7;
+  --ink: #29241f;
+  --ink-2: #4a443b;
+  --muted: #857a6b;
+
+  /* structural lines (prominent, blueprint-style) */
+  --line: rgba(41, 36, 31, 0.18);
+  --line-soft: rgba(41, 36, 31, 0.1);
+
+  /* pastel accents used as technical colour-coding */
+  --clay: #bd7550; /* people   */
+  --sage: #869072; /* products */
+  --blush: #c1928a; /* food     */
+  --sky: #8a9aa1; /* misc     */
+  --accent: var(--clay);
+
+  --night: #221d18;
+
+  --rail: 1400px;
+}
+
+@theme inline {
+  --color-sand: var(--sand);
+  --color-oat: var(--oat);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-clay: var(--clay);
+  --color-sage: var(--sage);
+  --color-blush: var(--blush);
+  --color-sky: var(--sky);
+  --color-accent: var(--accent);
+  --color-night: var(--night);
+
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-grotesk);
+  --font-mono: var(--font-space-mono);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: var(--sand);
+}
+
+body {
+  background: var(--sand);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ---- Type helpers ----------------------------------------------- */
+.font-display {
+  font-family: var(--font-display), "Arial Black", sans-serif;
+}
+
+.display-xl {
+  font-family: var(--font-display), "Arial Black", sans-serif;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+/* monospace UI micro-label — the anime.js "text-ui" motif */
+.ui-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s var(--ease-out-expo);
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+/* ---- Blueprint framing ------------------------------------------ */
+/* continuous side rails + centered content column */
+.rail {
+  width: 100%;
+  max-width: var(--rail);
+  margin-inline: auto;
+}
+.rail-border {
+  border-inline: 1px solid var(--line);
+}
+
+/* corner registration marks (the technical "+") */
+.reg {
+  position: relative;
+}
+.reg::before,
+.reg::after {
+  content: "+";
+  position: absolute;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: var(--ink);
+  opacity: 0.4;
+}
+.reg::before {
+  top: -0.5rem;
+  left: -0.5rem;
+}
+.reg::after {
+  bottom: -0.5rem;
+  right: -0.5rem;
+}
+
+/* faint blueprint grid background */
+.blueprint {
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* ---- Reveal primitives ------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 1s var(--ease-out-expo),
+    transform 1s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.img-reveal {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.2s var(--ease-out-expo);
+  will-change: clip-path;
+}
+.img-reveal.is-in {
+  clip-path: inset(0 0 0% 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .img-reveal {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
+
+/* ---- Skeleton shimmer (image loading placeholder) --------------- */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--oat);
+  background-image: linear-gradient(
+    var(--line-soft) 1px,
+    transparent 1px
+  ),
+  linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(246, 241, 231, 0.65),
+    transparent
+  );
+  animation: shimmer 1.6s var(--ease-out-expo) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+  }
+}
+
+/* grain */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
