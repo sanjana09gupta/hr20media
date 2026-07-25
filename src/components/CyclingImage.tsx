@@ -14,6 +14,8 @@ type Props = {
   kenBurns?: boolean;
   /** object-fit for the image (default "cover") */
   fit?: "cover" | "contain";
+  /** load images eagerly instead of lazily */
+  eager?: boolean;
 };
 
 /**
@@ -29,6 +31,7 @@ export default function CyclingImage({
   className = "",
   kenBurns = true,
   fit = "cover",
+  eager = false,
 }: Props) {
   const [i, setI] = useState(0);
 
@@ -69,6 +72,7 @@ export default function CyclingImage({
             alt=""
             fill
             priority={priority && i === 0}
+            loading={eager && !(priority && i === 0) ? "eager" : undefined}
             sizes={sizes}
             className={fit === "contain" ? "object-contain" : "object-cover"}
           />

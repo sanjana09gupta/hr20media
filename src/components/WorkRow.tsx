@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValue, useSpring } from "motion/react";
 import CyclingImage from "./CyclingImage";
-import Reveal from "./Reveal";
 
 type Props = {
   index: number;
@@ -76,14 +75,13 @@ export default function WorkRow({
         onMouseMove={onMove}
         className={`relative md:col-span-7 ${index % 2 === 1 ? "md:order-1" : ""}`}
       >
-        <Reveal variant="img-reveal">
-          <CyclingImage
-            images={images}
-            interval={3200 + index * 400}
-            sizes="(max-width: 768px) 100vw, 58vw"
-            className="aspect-[16/10] w-full rounded-sm"
-          />
-        </Reveal>
+        <CyclingImage
+          images={images}
+          interval={3200 + index * 400}
+          eager
+          sizes="(max-width: 768px) 100vw, 58vw"
+          className="aspect-[16/10] w-full rounded-sm"
+        />
 
         <AnimatePresence>
           {hover && (

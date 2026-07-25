@@ -20,10 +20,11 @@ type RevealProps = {
 };
 
 /**
- * Adds `is-in` when the element scrolls into view so the CSS transitions in
- * globals.css can play. Works for text (.reveal), images (.img-reveal) or as a
- * neutral trigger (variant="none") that just toggles `is-in` for children like
- * .line-mask.
+ * Adds `is-in` when the element enters the viewport so the CSS transitions in
+ * globals.css can play. Driven by a scroll/resize listener (plus an immediate
+ * on-mount check) rather than IntersectionObserver, so content can never get
+ * stuck hidden if the observer is paused. Works for text (.reveal), images
+ * (.img-reveal) or as a neutral trigger (variant="none").
  */
 export default function Reveal({
   children,
@@ -31,7 +32,6 @@ export default function Reveal({
   variant = "reveal",
   delay = 0,
   as = "div",
-  once = true,
 }: RevealProps) {
   const ref = useRef<HTMLElement>(null);
 
@@ -39,31 +39,47 @@ export default function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            if (delay) {
-              const t = window.setTimeout(
-                () => el.classList.add("is-in"),
-                delay
-              );
-              if (once) io.unobserve(el);
-              return () => window.clearTimeout(t);
-            }
-            el.classList.add("is-in");
-            if (once) io.unobserve(el);
-          } else if (!once) {
-            el.classList.remove("is-in");
-          }
-        }
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
+    let revealed = false;
+    let raf = 0;
 
-    io.observe(el);
-    return () => io.disconnect();
-  }, [delay, once]);
+    const doReveal = () => {
+      if (revealed) return;
+      revealed = true;
+      cleanup();
+      if (delay) window.setTimeout(() => el.classList.add("is-in"), delay);
+      else el.classList.add("is-in");
+    };
+
+    const check = () => {
+      if (revealed) return;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      if (r.top < vh * 0.9 && r.bottom > 0) doReveal();
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(check);
+    };
+
+    const cleanup = () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+    };
+
+    // reveal above-the-fold content right away, watch the rest on scroll
+    check();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    // safety net in case no scroll/resize ever fires
+    const failSafe = window.setTimeout(doReveal, 3000);
+
+    return () => {
+      cleanup();
+      window.clearTimeout(failSafe);
+    };
+  }, [delay]);
 
   const base = variant === "none" ? "" : variant;
 
