@@ -66,6 +66,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  prefetch={false}
                   data-id={item.href}
                   className="rounded-full px-4 py-2 text-[0.85rem] font-medium opacity-85 transition-opacity hover:opacity-100"
                 >
@@ -134,6 +135,7 @@ export default function Header() {
                   >
                     <Link
                       href={item.href}
+                      prefetch={false}
                       onClick={() => setOpen(false)}
                       className="font-display block border-b border-line py-4 text-4xl font-bold tracking-tight"
                     >

@@ -45,6 +45,7 @@ export default function WorkRow({
   return (
     <Link
       href={`/work/${slug}`}
+      prefetch={false}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       className="group grid grid-cols-1 items-center gap-6 border-b border-line px-5 py-12 sm:px-7 md:grid-cols-12 md:gap-12"

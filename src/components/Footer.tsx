@@ -26,17 +26,17 @@ export default function Footer() {
             <p className="ui-label text-sand/40">Work</p>
             <ul className="mt-5 space-y-3 text-sm text-sand/75">
               <li>
-                <Link href="/work/people" className="link-underline">
+                <Link href="/work/people" prefetch={false} className="link-underline">
                   People
                 </Link>
               </li>
               <li>
-                <Link href="/work/products" className="link-underline">
+                <Link href="/work/products" prefetch={false} className="link-underline">
                   Products
                 </Link>
               </li>
               <li>
-                <Link href="/work/food" className="link-underline">
+                <Link href="/work/food" prefetch={false} className="link-underline">
                   Food &amp; Beverages
                 </Link>
               </li>

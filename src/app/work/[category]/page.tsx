@@ -74,6 +74,7 @@ export default async function CategoryPage({ params }: Params) {
       <section className="border-t border-line">
         <Link
           href={`/work/${nextCat.slug}`}
+          prefetch={false}
           className="group flex items-center justify-between px-5 py-16 sm:px-7 sm:py-24"
         >
           <div>
