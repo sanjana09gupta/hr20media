@@ -9,14 +9,14 @@ import { galleries } from "@/lib/gallery";
 const ease = [0.16, 1, 0.3, 1] as const;
 const lines = ["Inspiration", "into", "Reality"];
 
-// a curated cross-category reel for the hero background
+// a curated hero reel — new model shots up front, with a little variety
 const reel = [
-  galleries.people[8].src,
+  galleries.people[0].src,
+  galleries.people[4].src,
   galleries.food[0].src,
+  galleries.people[10].src,
   galleries.products[4].src,
-  galleries.people[13].src,
-  galleries.food[6].src,
-  galleries.products[11].src,
+  galleries.people[17].src,
 ];
 
 export default function Hero() {
