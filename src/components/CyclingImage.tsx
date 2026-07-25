@@ -12,6 +12,8 @@ type Props = {
   className?: string;
   /** slow ken-burns zoom on each frame */
   kenBurns?: boolean;
+  /** object-fit for the image (default "cover") */
+  fit?: "cover" | "contain";
 };
 
 /**
@@ -26,6 +28,7 @@ export default function CyclingImage({
   priority = false,
   className = "",
   kenBurns = true,
+  fit = "cover",
 }: Props) {
   const [i, setI] = useState(0);
 
@@ -67,7 +70,7 @@ export default function CyclingImage({
             fill
             priority={priority && i === 0}
             sizes={sizes}
-            className="object-cover"
+            className={fit === "contain" ? "object-contain" : "object-cover"}
           />
         </motion.div>
       </AnimatePresence>

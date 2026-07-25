@@ -22,16 +22,18 @@ const reel = [
 export default function Hero() {
   return (
     <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden">
-      {/* cycling background */}
-      <div className="absolute inset-0 z-0">
+      {/* cycling background — full photo, no crop */}
+      <div className="absolute inset-0 z-0 bg-night">
         <CyclingImage
           images={reel}
           interval={4200}
           priority
           sizes="100vw"
+          fit="contain"
+          kenBurns={false}
           className="h-full w-full"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-night/35 to-night/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night/80 via-transparent to-night/30" />
       </div>
 
       <div className="relative z-10 px-5 pb-14 pt-28 sm:px-7 sm:pb-20">
