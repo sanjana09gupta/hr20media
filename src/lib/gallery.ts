@@ -1,4 +1,4 @@
-// Auto-generated from public/images. People includes new model shoot + original set.
+// Auto-generated. People = bundled (model shoot + originals) + Drive-linked (folders 2/3).
 export type Shot = { src: string; w: number; h: number; alt: string };
 
 export const galleries = {
@@ -338,6 +338,246 @@ export const galleries = {
       "w": 1280,
       "h": 670,
       "alt": "People photography 56"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1rL1aaEDwnPbqp1UU9LajjK8Qv-N-TFRz=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 57"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/11jw_P-tRzlWl0MRKn41ylDxGhw1cOYER=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 58"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1G7gfHiRXaYb3X5nJpyEBIbmX_aX4Tsj9=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 59"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1SxVz5UWghbQ1-dn9P_bbYgyCORfA4NhN=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 60"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1or9tHSXrJYVy8uigsBzpVm6zlOS5sqwv=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 61"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1vlTu_C94P-8i65h5LLSe9OZuqZQJGHVy=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 62"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1NY5uypIBAfm1OmpXN6-oVjwqJBB_OlOU=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 63"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1b1fHBRnM6b_BZQP6_jyAW7aawnXehU4R=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 64"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1GfvUiJxpgDgRIf8IhBHf0pjrb5_ZYjTw=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 65"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1vYK5WOdKkMufMQZ4apLfLa6-K8YP8_AU=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 66"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/17_9eCaDG2xK8DwO5-XmOX5iX0J88GWoM=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 67"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1zpopqSS3bLKdQK2wylrTMrlLUHP-hI58=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 68"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/16ZVEeSHhzRguwp3nAmQDH0wUu3xmfUb5=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 69"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/16ystQLyPvOrFAmpCOnpVGvMUAr93skkr=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 70"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/154oavTDT1bnSR3AAJJZ-w2UbmMnCn9fs=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 71"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1L23tQSEo3H71mo94g-lfRcfWVMyMahSk=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 72"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1MFaXi0YuTPfnvChkqLKR4lHqlcA59Lgy=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 73"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1cZgjw_PeSgjp024G64y3MqFAvPIKVwqU=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 74"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1fKwxDfTWImdFJvRdNOzdgBlzmDizpcVx=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 75"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/16TrXbrrPBAL7ELqn6TVmqkgVd_2NmKmE=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 76"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1KHL3uTD8WTYcKoE_T1JzFYEjglvi9zay=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 77"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1-lu9UWBhgvjtzeaeSPFdBkyjREipSUFT=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 78"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1t4tvsKAUTh2dz2JIeQCGLU_bpH87Sjdw=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 79"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1HBBkELzfBB3ZeSLrVIvGf8W7BDlFlyhE=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 80"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/15_2luJqQ32Rh19qVe5pDh7XLpC5uCBvM=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 81"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1E1u_K_yCysSKgKhOx2w6eiI_Wktc20lL=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 82"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/18OeqFlRptZ-qyJdk5EF-1Ch5jrE20Zpj=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 83"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1Ttur0ghBhRCYRXCtIEXN17T5EHMFAE0v=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 84"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1wfpb4scoIuHhUP25Prwc7LobLuRuc5eC=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 85"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1GVL8Lu4nPo5MUgAtEWeX8vwWNH5vhyJH=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 86"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1QJE59fSVfnDIYtllB1NVbVfA5Sz8oYRA=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 87"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1camN2piQA4C6sQ8wclikKTrokMIOKbFS=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 88"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1j2_et1Lo01ET3qRNqsoM1baaJvec0QXN=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 89"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1KYfpbFTy33OxaEqJ6TybDhUzF8zifATG=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 90"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1G22QhsYqLqovLr1tBCHrNOEJrPbx1DCt=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 91"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/18_6sPSq0M2wIkD2eaEbp0rl7a4WuTGDJ=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 92"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/18d_2PKBzdnKsxYy1_tmmsQToVfJXEda7=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 93"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/16sp3Y16zjOkSEaVZErunPGlKSzpn_G3c=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 94"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1_G9sTVGiHCR-Ej2d2YgMqwLoh7QHD27X=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 95"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1sfMGqP_Tc6VD2SZc_OJ5WLkrTUKtV-GU=w1280",
+      "w": 1024,
+      "h": 1280,
+      "alt": "People photography 96"
     }
   ],
   "products": [
