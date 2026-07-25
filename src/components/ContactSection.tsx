@@ -39,15 +39,13 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="blueprint scroll-mt-20 bg-oat">
-      <div className="flex items-center justify-between border-y border-line px-5 py-3 sm:px-7">
-        <span className="ui-label">[ 04 ] — Start a project</span>
-        <span className="ui-label">Response ≤ 48h</span>
-      </div>
-
+    <section id="contact" className="scroll-mt-20 border-t border-line bg-oat">
       <div className="grid gap-0 md:grid-cols-2">
-        <div className="border-line px-5 py-14 sm:px-7 sm:py-20 md:border-r">
+        <div className="border-line px-5 py-16 sm:px-7 sm:py-24 md:border-r">
           <Reveal>
+            <p className="mb-6 text-xs font-medium uppercase tracking-[0.25em] text-clay">
+              Start a project
+            </p>
             <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] font-bold leading-[0.98] tracking-tight">
               Let&apos;s make
               <br />

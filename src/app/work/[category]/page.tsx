@@ -33,16 +33,14 @@ export default async function CategoryPage({ params }: Params) {
 
   return (
     <>
-      <div className="flex items-center justify-between border-b border-line px-5 py-3 pt-[76px] sm:px-7">
-        <Link href="/#work" className="ui-label transition-colors hover:text-ink">
-          ← Index / All work
+      <div className="flex items-center justify-between border-b border-line px-5 py-4 pt-[80px] text-xs uppercase tracking-[0.2em] text-muted sm:px-7">
+        <Link href="/#work" className="transition-colors hover:text-ink">
+          ← All work
         </Link>
-        <span className="ui-label">
-          WORK / {cat.code} — {shots.length} frames
-        </span>
+        <span>{shots.length} frames</span>
       </div>
 
-      <header className="blueprint px-5 py-14 sm:px-7 sm:py-20">
+      <header className="px-5 py-16 sm:px-7 sm:py-24">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <Reveal>
             <div className="mb-4 flex items-center gap-3">
@@ -50,7 +48,9 @@ export default async function CategoryPage({ params }: Params) {
                 className="h-3 w-3 rounded-full"
                 style={{ background: cat.accent }}
               />
-              <span className="ui-label">{cat.tagline}</span>
+              <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+                {cat.tagline}
+              </span>
             </div>
             <h1
               className="font-display text-[clamp(2.8rem,9vw,8rem)] font-bold leading-[0.9] tracking-tight"

@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValue, useSpring } from "motion/react";
-import ImageFrame from "./ImageFrame";
+import CyclingImage from "./CyclingImage";
+import Reveal from "./Reveal";
 
 type Props = {
   index: number;
@@ -11,15 +12,13 @@ type Props = {
   title: string;
   tagline: string;
   blurb: string;
-  cover: string;
+  images: string[];
   accent: string;
-  code: string;
 };
 
 /**
- * A work row styled as a technical panel: mono index/coordinates, a bordered
- * image cell, and a cursor-following "View" badge tinted with the category's
- * accent colour.
+ * A work row whose image slot auto-cycles through that category's photos, with
+ * a cursor-following "View" badge tinted in the category's accent.
  */
 export default function WorkRow({
   index,
@@ -27,9 +26,8 @@ export default function WorkRow({
   title,
   tagline,
   blurb,
-  cover,
+  images,
   accent,
-  code,
 }: Props) {
   const [hover, setHover] = useState(false);
   const areaRef = useRef<HTMLDivElement>(null);
@@ -50,59 +48,42 @@ export default function WorkRow({
       href={`/work/${slug}`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="group grid grid-cols-1 items-stretch border-b border-line md:grid-cols-12"
+      className="group grid grid-cols-1 items-center gap-6 border-b border-line px-5 py-12 sm:px-7 md:grid-cols-12 md:gap-12"
     >
-      {/* meta cell */}
-      <div
-        className={`flex flex-col justify-between gap-8 px-5 py-8 sm:px-7 md:col-span-5 md:py-12 ${
-          index % 2 === 1 ? "md:order-2 md:border-l" : "md:border-r"
-        } border-line`}
-      >
-        <div className="flex items-center justify-between">
-          <span className="ui-label">
-            0{index + 1} / {code}
+      <div className={`md:col-span-5 ${index % 2 === 1 ? "md:order-2" : ""}`}>
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+          {String(index + 1).padStart(2, "0")} — {tagline}
+        </p>
+        <h3
+          className="font-display mt-3 text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-none tracking-tight transition-colors duration-300"
+          style={{ color: hover ? accent : undefined }}
+        >
+          {title}
+        </h3>
+        <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-muted">
+          {blurb}
+        </p>
+        <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
+          <span className="link-underline">View portfolio</span>
+          <span className="transition-transform duration-300 group-hover:translate-x-1">
+            →
           </span>
-          <span
-            className="h-2.5 w-2.5 rounded-full"
-            style={{ background: accent }}
-          />
-        </div>
-
-        <div>
-          <p className="ui-label mb-3">{tagline}</p>
-          <h3
-            className="font-display text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-none tracking-tight transition-colors duration-300"
-            style={{ color: hover ? accent : undefined }}
-          >
-            {title}
-          </h3>
-          <p className="mt-5 max-w-md text-[0.95rem] leading-relaxed text-muted">
-            {blurb}
-          </p>
-          <span className="ui-label mt-8 inline-flex items-center gap-2 text-ink">
-            View portfolio
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </span>
-        </div>
+        </span>
       </div>
 
-      {/* image cell */}
       <div
         ref={areaRef}
         onMouseMove={onMove}
-        className={`relative p-5 sm:p-7 md:col-span-7 ${
-          index % 2 === 1 ? "md:order-1" : ""
-        }`}
+        className={`relative md:col-span-7 ${index % 2 === 1 ? "md:order-1" : ""}`}
       >
-        <ImageFrame
-          src={cover}
-          alt={`${title} photography by HR20MEDIA`}
-          amount={8}
-          sizes="(max-width: 768px) 100vw, 58vw"
-          className="aspect-[16/10] w-full"
-        />
+        <Reveal variant="img-reveal">
+          <CyclingImage
+            images={images}
+            interval={3200 + index * 400}
+            sizes="(max-width: 768px) 100vw, 58vw"
+            className="aspect-[16/10] w-full rounded-sm"
+          />
+        </Reveal>
 
         <AnimatePresence>
           {hover && (
@@ -112,7 +93,7 @@ export default function WorkRow({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.4 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="pointer-events-none absolute z-10 hidden -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full px-6 py-6 font-mono text-[0.62rem] uppercase tracking-widest text-paper md:flex"
+              className="pointer-events-none absolute z-10 hidden -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full px-6 py-6 text-[0.62rem] font-semibold uppercase tracking-widest text-paper md:flex"
             >
               View →
             </motion.span>

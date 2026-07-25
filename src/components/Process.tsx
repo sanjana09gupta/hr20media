@@ -23,14 +23,12 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="scroll-mt-20">
-      <div className="flex items-center justify-between border-b border-line px-5 py-3 sm:px-7">
-        <span className="ui-label">[ 03 ] — How we work</span>
-        <span className="ui-label">Concept → Completion</span>
-      </div>
-
-      <div className="px-5 py-14 sm:px-7 sm:py-16">
+    <section id="process" className="scroll-mt-20 border-t border-line">
+      <div className="px-5 py-16 sm:px-7 sm:py-20">
         <Reveal className="max-w-2xl">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.25em] text-clay">
+            How we work
+          </p>
           <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.02] tracking-tight">
             A managed process, from concept to completion.
           </h2>
@@ -46,12 +44,9 @@ export default function Process() {
               i < 2 ? "border-b md:border-b-0 md:border-r" : ""
             }`}
           >
-            <div className="flex items-center justify-between">
-              <span className="font-display text-5xl font-bold text-line transition-colors duration-500 group-hover:text-clay">
-                {s.n}
-              </span>
-              <span className="ui-label">{s.code}</span>
-            </div>
+            <span className="font-display text-5xl font-bold text-line transition-colors duration-500 group-hover:text-clay">
+              {s.n}
+            </span>
             <h3 className="font-display mt-8 text-2xl font-bold tracking-tight">
               {s.title}
             </h3>

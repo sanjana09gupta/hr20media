@@ -150,12 +150,9 @@ html.lenis body {
   right: -0.5rem;
 }
 
-/* faint blueprint grid background */
+/* blueprint grid removed for a calmer, cleaner look */
 .blueprint {
-  background-image:
-    linear-gradient(var(--line-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size: 44px 44px;
+  background-image: none;
 }
 
 /* ---- Reveal primitives ------------------------------------------ */
