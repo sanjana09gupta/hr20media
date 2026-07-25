@@ -80,8 +80,10 @@ export default function WorkRow({
           images={images}
           interval={3200 + index * 400}
           eager
+          fit="contain"
+          kenBurns={false}
           sizes="(max-width: 768px) 100vw, 58vw"
-          className="aspect-[16/10] w-full rounded-sm"
+          className="aspect-square w-full rounded-sm bg-oat"
         />
 
         <AnimatePresence>
