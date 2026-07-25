@@ -23,16 +23,18 @@ export default function Hero() {
   return (
     <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden">
       {/* cycling background */}
-      <CyclingImage
-        images={reel}
-        interval={4200}
-        priority
-        sizes="100vw"
-        className="absolute inset-0 -z-10 h-full w-full"
-      />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-night/85 via-night/35 to-night/45" />
+      <div className="absolute inset-0 z-0">
+        <CyclingImage
+          images={reel}
+          interval={4200}
+          priority
+          sizes="100vw"
+          className="h-full w-full"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-night/35 to-night/45" />
+      </div>
 
-      <div className="px-5 pb-14 pt-28 sm:px-7 sm:pb-20">
+      <div className="relative z-10 px-5 pb-14 pt-28 sm:px-7 sm:pb-20">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
