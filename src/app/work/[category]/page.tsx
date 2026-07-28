@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { categories, galleries, type CategorySlug } from "@/lib/gallery";
-import Gallery from "@/components/Gallery";
+import {
+  categories,
+  galleries,
+  PEOPLE_DRIVE_FOLDER_IDS,
+  type CategorySlug,
+} from "@/lib/gallery";
+import GalleryWithLiveDrive from "@/components/GalleryWithLiveDrive";
 import Reveal from "@/components/Reveal";
 
 type Params = { params: Promise<{ category: string }> };
@@ -68,7 +73,11 @@ export default async function CategoryPage({ params }: Params) {
       </header>
 
       <section className="border-t border-line px-5 py-10 sm:px-7">
-        <Gallery shots={shots} accent={cat.accent} />
+        <GalleryWithLiveDrive
+          shots={shots}
+          accent={cat.accent}
+          driveFolderIds={cat.slug === "people" ? PEOPLE_DRIVE_FOLDER_IDS : undefined}
+        />
       </section>
 
       <section className="border-t border-line">

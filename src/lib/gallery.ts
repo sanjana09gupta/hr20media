@@ -1,6 +1,10 @@
 // Auto-generated. People = bundled (model shoot + originals) + Drive-linked (folders 2/3).
 export type Shot = { src: string; w: number; h: number; alt: string };
 
+// kept for later — live Drive fetch (src/lib/drive.ts) is on hold for now,
+// the 40 folder 2/3 photos below are hardcoded/downloaded links instead.
+export const PEOPLE_DRIVE_FOLDER_IDS: string[] = [];
+
 export const galleries = {
   "people": [
     {

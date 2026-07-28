@@ -5,26 +5,26 @@
 /* ------------------------------------------------------------------ */
 
 :root {
-  /* nautical-luxury surfaces — cream, with a hint of sea-blue in the mid tones */
-  --sand: #f0dfcb;
-  --oat: #e4e9ec;
-  --paper: #fff1e7;
-  --ink: #1e3a4c;
-  --ink-2: #3c5a6c;
-  --muted: #6e8494;
+  /* dreamy pastel — cool summer-breeze surfaces */
+  --sand: #ececf2;
+  --oat: #edf1ef;
+  --paper: #f5f5f5;
+  --ink: #35627a;
+  --ink-2: #4f7791;
+  --muted: #7c93a0;
 
   /* structural lines */
-  --line: rgba(30, 58, 76, 0.16);
-  --line-soft: rgba(30, 58, 76, 0.09);
+  --line: rgba(53, 98, 122, 0.16);
+  --line-soft: rgba(53, 98, 122, 0.09);
 
   /* one loud accent + two supporting, colour-coded by category */
-  --clay: #805232; /* people   — primary accent, chestnut */
-  --sage: #326080; /* products — deep navy */
-  --blush: #5c7f94; /* food     — slate blue */
-  --sky: #b5d2e6; /* misc     — powder blue */
+  --clay: #b46258; /* people   — primary accent, dusty rust */
+  --sage: #6e7a78; /* products — deepened sage */
+  --blush: #c48179; /* food     — deepened dusty pink */
+  --sky: #a6a9d0; /* misc     — lavender */
   --accent: var(--clay);
 
-  --night: #12222c;
+  --night: #16262f;
 
   --rail: 1400px;
 }
