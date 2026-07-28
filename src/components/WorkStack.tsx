@@ -9,7 +9,6 @@ import {
   useMotionValueEvent,
   useScroll,
   useSpring,
-  useTransform,
   type MotionValue,
 } from "motion/react";
 import CyclingImage from "./CyclingImage";
@@ -18,15 +17,27 @@ import { categories, galleries, type CategorySlug } from "@/lib/gallery";
 const ease = [0.16, 1, 0.3, 1] as const;
 const N = categories.length;
 
+/** clamp v to [0, 1) so the floor never lands outside 0..N-1 */
+function indexFromProgress(v: number) {
+  return Math.min(N - 1, Math.max(0, Math.floor(v * N)));
+}
+
 /**
  * A pinned scroll section — the viewport holds still while the three work
- * categories cross-fade and jump in one after another as the user scrolls.
+ * categories jump in one after another as the user scrolls. Only one panel
+ * is ever active at a time (a single index drives every panel + dot), so
+ * there's no way for two categories to render on top of each other.
  */
 export default function WorkStack() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
+  });
+
+  const [active, setActive] = useState(0);
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    setActive(indexFromProgress(v));
   });
 
   return (
@@ -37,13 +48,13 @@ export default function WorkStack() {
     >
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         {categories.map((cat, i) => (
-          <Panel key={cat.slug} index={i} cat={cat} progress={scrollYProgress} />
+          <Panel key={cat.slug} index={i} cat={cat} active={active} />
         ))}
 
         {/* progress rail */}
         <div className="pointer-events-none absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2 sm:bottom-1/2 sm:left-auto sm:right-7 sm:translate-x-0 sm:translate-y-1/2 sm:flex-col">
           {categories.map((cat, i) => (
-            <Dot key={cat.slug} index={i} progress={scrollYProgress} accent={cat.accent} />
+            <Dot key={cat.slug} isActive={active === i} accent={cat.accent} />
           ))}
         </div>
       </div>
@@ -54,43 +65,14 @@ export default function WorkStack() {
 function Panel({
   index,
   cat,
-  progress,
+  active,
 }: {
   index: number;
   cat: (typeof categories)[number];
-  progress: MotionValue<number>;
+  active: number;
 }) {
-  const start = index / N;
-  const end = (index + 1) / N;
-  const overlap = 0.12;
-  const inputRange = [
-    Math.max(0, start - overlap),
-    start,
-    Math.max(start, end - overlap),
-    end,
-  ];
-
-  const opacity = useTransform(
-    progress,
-    inputRange,
-    index === 0 ? [1, 1, 1, 0] : index === N - 1 ? [0, 1, 1, 1] : [0, 1, 1, 0]
-  );
-  const y = useTransform(
-    progress,
-    inputRange,
-    index === 0 ? [0, 0, 0, -48] : index === N - 1 ? [48, 0, 0, 0] : [48, 0, 0, -48]
-  );
-  const scale = useTransform(
-    progress,
-    inputRange,
-    index === 0 ? [1, 1, 1, 0.94] : index === N - 1 ? [0.94, 1, 1, 1] : [0.94, 1, 1, 0.94]
-  );
-
-  const [active, setActive] = useState(index === 0);
-  useMotionValueEvent(progress, "change", (v) => {
-    const idx = Math.min(N - 1, Math.floor(v * N));
-    setActive(idx === index);
-  });
+  const isActive = active === index;
+  const passed = active > index;
 
   const [hover, setHover] = useState(false);
   const areaRef = useRef<HTMLDivElement>(null);
@@ -107,9 +89,15 @@ function Panel({
 
   return (
     <motion.div
-      style={{ opacity, y, scale }}
+      initial={false}
+      animate={{
+        opacity: isActive ? 1 : 0,
+        y: isActive ? 0 : passed ? -48 : 48,
+        scale: isActive ? 1 : 0.94,
+      }}
+      transition={{ duration: 0.55, ease }}
       className={`absolute inset-0 flex items-center px-5 sm:px-7 ${
-        active ? "pointer-events-auto" : "pointer-events-none"
+        isActive ? "pointer-events-auto" : "pointer-events-none"
       }`}
     >
       <Link
@@ -178,26 +166,12 @@ function Panel({
   );
 }
 
-function Dot({
-  index,
-  progress,
-  accent,
-}: {
-  index: number;
-  progress: MotionValue<number>;
-  accent: string;
-}) {
-  const [active, setActive] = useState(index === 0);
-  useMotionValueEvent(progress, "change", (v) => {
-    const idx = Math.min(N - 1, Math.floor(v * N));
-    setActive(idx === index);
-  });
-
+function Dot({ isActive, accent }: { isActive: boolean; accent: string }) {
   return (
     <span
-      style={{ background: active ? accent : "var(--line)" }}
+      style={{ background: isActive ? accent : "var(--line)" }}
       className={`rounded-full transition-all duration-500 ${
-        active ? "h-1.5 w-6 sm:h-6 sm:w-1.5" : "h-1.5 w-1.5"
+        isActive ? "h-1.5 w-6 sm:h-6 sm:w-1.5" : "h-1.5 w-1.5"
       }`}
     />
   );
