@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Magnetic from "./Magnetic";
@@ -14,20 +13,25 @@ const nav = [
   { label: "Studio", href: "/#studio" },
 ];
 
+function ApertureMark() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      className="h-4 w-4"
+    >
+      <circle cx="12" cy="12" r="7.5" />
+      <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      <path d="M12 4v2.4M12 17.6V20M20 12h-2.4M6.4 12H4M17.3 6.7l-1.7 1.7M8.4 15.6l-1.7 1.7M17.3 17.3l-1.7-1.7M8.4 8.4 6.7 6.7" />
+    </svg>
+  );
+}
+
 export default function Header() {
-  const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
-  const isHome = pathname === "/";
-  const overHero = isHome && !scrolled;
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";
@@ -36,30 +40,27 @@ export default function Header() {
     };
   }, [open]);
 
-  const textColor = overHero ? "text-paper" : "text-ink";
-
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-          scrolled
-            ? "border-b border-line bg-paper/85 backdrop-blur-md"
-            : "border-b border-transparent bg-transparent"
-        }`}
-      >
-        <div className="rail flex h-[64px] items-center justify-between px-5 sm:px-7">
+      <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+        <div className="rail flex h-[60px] items-center justify-between gap-4 rounded-full bg-night px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.55)] sm:h-[64px] sm:px-5">
           <Link
             href="/"
             aria-label="HR20MEDIA home"
-            className={`font-display text-[1.3rem] font-bold leading-none tracking-tight transition-colors ${textColor}`}
+            className="flex items-center gap-2.5 text-paper"
           >
-            HR20<span className="text-clay">MEDIA</span>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-paper text-clay">
+              <ApertureMark />
+            </span>
+            <span className="font-display text-[1.15rem] font-bold leading-none tracking-tight">
+              HR20<span className="text-clay">MEDIA</span>
+            </span>
           </Link>
 
-          <nav className={`hidden items-center md:flex ${textColor}`}>
+          <nav className="hidden items-center text-paper md:flex">
             <AnimatedBackground
               enableHover
-              className={overHero ? "rounded-full bg-white/15" : "rounded-full bg-ink/10"}
+              className="rounded-full bg-paper/15"
               transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
             >
               {nav.map((item) => (
@@ -75,17 +76,23 @@ export default function Header() {
               ))}
             </AnimatedBackground>
 
-            <div className="ml-4">
+            <div className="ml-3 flex items-center gap-2">
               <Magnetic strength={0.3}>
                 <Link
                   href="/#contact"
-                  className={`rounded-full border px-5 py-2 text-[0.8rem] font-semibold transition-colors duration-300 ${
-                    overHero
-                      ? "border-paper/60 hover:bg-paper hover:text-ink"
-                      : "border-ink hover:bg-ink hover:text-paper"
-                  }`}
+                  className="rounded-full bg-paper px-5 py-2 text-[0.8rem] font-semibold text-ink transition-colors duration-300 hover:bg-clay hover:text-paper"
                 >
                   Start a project
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.4}>
+                <Link
+                  href="/#contact"
+                  aria-hidden
+                  tabIndex={-1}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-paper/40 text-paper transition-colors duration-300 hover:border-paper hover:bg-paper hover:text-ink"
+                >
+                  ↗
                 </Link>
               </Magnetic>
             </div>
@@ -95,15 +102,15 @@ export default function Header() {
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={open}
-            className={`relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-[6px] md:hidden ${textColor}`}
+            className="relative z-50 flex h-9 w-9 flex-col items-center justify-center gap-[6px] text-paper md:hidden"
           >
             <span
-              className={`h-[1.5px] w-6 bg-current transition-transform duration-300 ${
+              className={`h-[1.5px] w-5 bg-current transition-transform duration-300 ${
                 open ? "translate-y-[3.75px] rotate-45" : ""
               }`}
             />
             <span
-              className={`h-[1.5px] w-6 bg-current transition-transform duration-300 ${
+              className={`h-[1.5px] w-5 bg-current transition-transform duration-300 ${
                 open ? "-translate-y-[3.75px] -rotate-45" : ""
               }`}
             />
