@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Space_Grotesk, Space_Mono } from "next/font/google";
+import { Libre_Caslon_Display, Libre_Caslon_Text, Space_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const caslonDisplay = Libre_Caslon_Display({
+  variable: "--font-caslon-display",
   subsets: ["latin"],
   display: "swap",
+  weight: "400",
 });
 
-const grotesk = Space_Grotesk({
-  variable: "--font-grotesk",
+const caslonText = Libre_Caslon_Text({
+  variable: "--font-caslon-text",
   subsets: ["latin"],
   display: "swap",
-  weight: ["500", "700"],
+  weight: ["400", "700"],
 });
 
 const spaceMono = Space_Mono({
@@ -56,7 +57,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${grotesk.variable} ${spaceMono.variable} h-full antialiased`}
+      className={`${caslonDisplay.variable} ${caslonText.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="grain min-h-full flex flex-col bg-sand text-ink">
         <SmoothScroll />

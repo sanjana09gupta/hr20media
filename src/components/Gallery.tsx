@@ -107,7 +107,7 @@ export default function Gallery({
                 width={active.w}
                 height={active.h}
                 sizes="92vw"
-                className="max-h-[86vh] w-auto rounded-sm object-contain"
+                className="max-h-[86vh] w-auto border border-paper/20 object-contain"
                 priority
               />
             </motion.div>
@@ -158,7 +158,7 @@ function Tile({
           loaded ? "opacity-100" : "opacity-0"
         }`}
       />
-      <span className="absolute left-2 top-2 font-mono text-[0.6rem] uppercase tracking-widest text-paper opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+      <span className="ui-label absolute left-2 top-2 text-paper opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         {String(i + 1).padStart(2, "0")}
       </span>
       <span

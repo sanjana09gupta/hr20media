@@ -60,7 +60,7 @@ export default function WorkRow({
         >
           {title}
         </h3>
-        <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-muted">
+        <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
           {blurb}
         </p>
         <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
@@ -83,18 +83,18 @@ export default function WorkRow({
           fit="contain"
           kenBurns={false}
           sizes="(max-width: 768px) 100vw, 58vw"
-          className="aspect-square w-full rounded-sm bg-oat"
+          className="aspect-square w-full border border-line bg-oat"
         />
 
         <AnimatePresence>
           {hover && (
             <motion.span
               style={{ left: x, top: y, background: accent }}
-              initial={{ opacity: 0, scale: 0.4 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.4 }}
+              initial={{ opacity: 0, scale: 0.5, rotate: -6 }}
+              animate={{ opacity: 1, scale: 1, rotate: -6 }}
+              exit={{ opacity: 0, scale: 0.5 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="pointer-events-none absolute z-10 hidden -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full px-6 py-6 text-[0.62rem] font-semibold uppercase tracking-widest text-paper md:flex"
+              className="ui-label pointer-events-none absolute z-10 hidden -translate-x-1/2 -translate-y-1/2 items-center justify-center border-2 border-ink px-5 py-2.5 text-paper md:flex"
             >
               View →
             </motion.span>
