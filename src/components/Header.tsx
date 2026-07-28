@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Magnetic from "./Magnetic";
@@ -31,7 +32,21 @@ function ApertureMark() {
 }
 
 export default function Header() {
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // dark pill over the dark hero photo, light pill everywhere else — the
+  // pill itself is always fully opaque, it just switches which "everywhere
+  // else" it needs to sit cleanly on top of
+  const overHero = pathname === "/" && !scrolled;
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";
@@ -43,13 +58,19 @@ export default function Header() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
-        <div className="rail flex h-[60px] items-center justify-between gap-4 rounded-full bg-night px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.55)] sm:h-[64px] sm:px-5">
-          <Link
-            href="/"
-            aria-label="HR20MEDIA home"
-            className="flex items-center gap-2.5 text-paper"
-          >
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-paper text-clay">
+        <div
+          className={`rail flex h-[60px] items-center justify-between gap-4 rounded-full px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.35)] transition-colors duration-500 sm:h-[64px] sm:px-5 ${
+            overHero
+              ? "bg-night text-paper"
+              : "border border-line bg-paper text-ink"
+          }`}
+        >
+          <Link href="/" aria-label="HR20MEDIA home" className="flex items-center gap-2.5">
+            <span
+              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-clay transition-colors duration-500 ${
+                overHero ? "bg-paper" : "bg-oat"
+              }`}
+            >
               <ApertureMark />
             </span>
             <span className="font-display text-[1.15rem] font-bold leading-none tracking-tight">
@@ -57,10 +78,12 @@ export default function Header() {
             </span>
           </Link>
 
-          <nav className="hidden items-center text-paper md:flex">
+          <nav className="hidden items-center md:flex">
             <AnimatedBackground
               enableHover
-              className="rounded-full bg-paper/15"
+              className={`rounded-full transition-colors duration-500 ${
+                overHero ? "bg-paper/15" : "bg-ink/8"
+              }`}
               transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
             >
               {nav.map((item) => (
@@ -80,7 +103,9 @@ export default function Header() {
               <Magnetic strength={0.3}>
                 <Link
                   href="/#contact"
-                  className="rounded-full bg-paper px-5 py-2 text-[0.8rem] font-semibold text-ink transition-colors duration-300 hover:bg-clay hover:text-paper"
+                  className={`rounded-full px-5 py-2 text-[0.8rem] font-semibold transition-colors duration-300 hover:bg-clay hover:text-paper ${
+                    overHero ? "bg-paper text-ink" : "bg-ink text-paper"
+                  }`}
                 >
                   Start a project
                 </Link>
@@ -90,7 +115,11 @@ export default function Header() {
                   href="/#contact"
                   aria-hidden
                   tabIndex={-1}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-paper/40 text-paper transition-colors duration-300 hover:border-paper hover:bg-paper hover:text-ink"
+                  className={`flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-300 hover:bg-clay hover:text-paper hover:border-clay ${
+                    overHero
+                      ? "border-paper/40 text-paper"
+                      : "border-ink/25 text-ink"
+                  }`}
                 >
                   ↗
                 </Link>
@@ -102,7 +131,7 @@ export default function Header() {
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={open}
-            className="relative z-50 flex h-9 w-9 flex-col items-center justify-center gap-[6px] text-paper md:hidden"
+            className="relative z-50 flex h-9 w-9 flex-col items-center justify-center gap-[6px] md:hidden"
           >
             <span
               className={`h-[1.5px] w-5 bg-current transition-transform duration-300 ${
