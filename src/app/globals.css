@@ -5,26 +5,26 @@
 /* ------------------------------------------------------------------ */
 
 :root {
-  /* muted warm-pastel surfaces */
+  /* warm surfaces */
   --sand: #e7e0d2;
   --oat: #efe8da;
-  --paper: #f6f1e7;
-  --ink: #29241f;
-  --ink-2: #4a443b;
-  --muted: #857a6b;
+  --paper: #f9f5ec;
+  --ink: #1c1712;
+  --ink-2: #3a332a;
+  --muted: #756a5b;
 
-  /* structural lines (prominent, blueprint-style) */
-  --line: rgba(41, 36, 31, 0.18);
-  --line-soft: rgba(41, 36, 31, 0.1);
+  /* structural lines */
+  --line: rgba(28, 23, 18, 0.16);
+  --line-soft: rgba(28, 23, 18, 0.09);
 
-  /* pastel accents used as technical colour-coding */
-  --clay: #bd7550; /* people   */
-  --sage: #869072; /* products */
-  --blush: #c1928a; /* food     */
+  /* one loud accent + two supporting, colour-coded by category */
+  --clay: #c14a1f; /* people   — primary accent */
+  --sage: #6f7f4f; /* products */
+  --blush: #b85c56; /* food     */
   --sky: #8a9aa1; /* misc     */
   --accent: var(--clay);
 
-  --night: #221d18;
+  --night: #19140f;
 
   --rail: 1400px;
 }
@@ -86,14 +86,14 @@ html.lenis body {
 
 /* ---- Type helpers ----------------------------------------------- */
 .font-display {
-  font-family: var(--font-display), "Arial Black", sans-serif;
+  font-family: var(--font-display), ui-rounded, "Segoe UI", sans-serif;
 }
 
 .display-xl {
-  font-family: var(--font-display), "Arial Black", sans-serif;
-  font-weight: 700;
-  line-height: 0.9;
-  letter-spacing: -0.03em;
+  font-family: var(--font-display), ui-rounded, "Segoe UI", sans-serif;
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
 }
 
 /* monospace UI micro-label — the anime.js "text-ui" motif */

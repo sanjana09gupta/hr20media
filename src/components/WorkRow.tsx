@@ -89,7 +89,7 @@ export default function WorkRow({
           fit="contain"
           kenBurns={false}
           sizes="(max-width: 768px) 100vw, 58vw"
-          className="aspect-square w-full rounded-sm bg-oat"
+          className="aspect-square w-full rounded-2xl bg-oat"
         />
 
         <AnimatePresence>

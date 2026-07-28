@@ -39,7 +39,7 @@ export default function ImageFrame({
   return (
     <div
       ref={ref}
-      className={`relative overflow-hidden border border-line ${
+      className={`relative overflow-hidden rounded-2xl border border-line ${
         loaded ? "" : "skeleton"
       } ${className}`}
     >

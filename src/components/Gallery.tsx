@@ -107,7 +107,7 @@ export default function Gallery({
                 width={active.w}
                 height={active.h}
                 sizes="92vw"
-                className="max-h-[86vh] w-auto rounded-sm object-contain"
+                className="max-h-[86vh] w-auto rounded-2xl object-contain"
                 priority
               />
             </motion.div>
@@ -142,7 +142,7 @@ function Tile({
       viewport={{ once: true, margin: "0px 0px -8% 0px" }}
       transition={{ duration: 0.9, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
       style={{ aspectRatio: `${shot.w} / ${shot.h}` }}
-      className={`group relative block w-full overflow-hidden border border-line ${
+      className={`group relative block w-full overflow-hidden rounded-2xl border border-line ${
         loaded ? "" : "skeleton"
       }`}
       aria-label={`Open ${shot.alt}`}

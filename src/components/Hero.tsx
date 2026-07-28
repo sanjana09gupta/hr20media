@@ -39,7 +39,7 @@ export default function Hero() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden rounded-b-[2rem] sm:rounded-b-[3.5rem] lg:rounded-b-[4.5rem]">
+    <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden rounded-[2rem] sm:rounded-[3.5rem] lg:rounded-[4.5rem]">
       {/* cycling background — full photo, no crop */}
       <div className="absolute inset-0 z-0 bg-night">
         <CyclingImage
@@ -66,6 +66,18 @@ export default function Hero() {
           <span className="h-1.5 w-1.5 rounded-full bg-clay" />
           Commercial Photography — Bournemouth, UK
         </span>
+      </motion.div>
+
+      {/* corner mark, balancing the eyebrow chip */}
+      <motion.div
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2, ease }}
+        className="absolute right-5 top-24 z-10 flex items-center gap-1.5 rounded-full border border-paper/25 bg-paper/10 px-3 py-2.5 backdrop-blur-md sm:right-7 sm:top-28"
+      >
+        <span className="h-1 w-1 rounded-full bg-paper/70" />
+        <span className="h-1 w-1 rounded-full bg-paper/70" />
+        <span className="h-1 w-1 rounded-full bg-paper/70" />
       </motion.div>
 
       {/* floating detail chip */}
@@ -158,7 +170,11 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          <Link
+            href="/work/people"
+            prefetch={false}
+            className="group flex items-center gap-3"
+          >
             <div className="flex -space-x-3">
               {recentShots.map((shot) => (
                 <Image
@@ -167,12 +183,14 @@ export default function Hero() {
                   alt={shot.alt}
                   width={40}
                   height={40}
-                  className="h-9 w-9 rounded-full border-2 border-night/60 object-cover ring-1 ring-paper/30 sm:h-10 sm:w-10"
+                  className="h-9 w-9 rounded-full border-2 border-night/60 object-cover ring-1 ring-paper/30 transition-transform duration-300 group-hover:-translate-y-1 sm:h-10 sm:w-10"
                 />
               ))}
             </div>
-            <span className="text-xs text-paper/70">Recent shoots</span>
-          </div>
+            <span className="link-underline text-xs text-paper/70 transition-colors duration-300 group-hover:text-paper">
+              Recent shoots
+            </span>
+          </Link>
         </motion.div>
       </div>
     </section>
