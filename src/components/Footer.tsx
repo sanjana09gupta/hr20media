@@ -16,7 +16,7 @@ export default function Footer() {
             >
               info@hr20media.com
             </a>
-            <p className="drop-cap mt-4 max-w-sm text-sm leading-relaxed text-sand/65">
+            <p className="mt-4 max-w-sm text-sm text-sand/55">
               Commercial photography from concept to final frame. Based in
               Bournemouth, shooting on location and in-studio across the UK.
             </p>

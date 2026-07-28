@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/*  HR20MEDIA — Broadsheet: an editorial newspaper front page          */
+/*  HR20MEDIA — warm-pastel × anime.js technical blueprint            */
 /* ------------------------------------------------------------------ */
 
 :root {
-  /* newsprint surfaces */
-  --sand: #e2d8c2;
-  --oat: #e9e0cc;
-  --paper: #f2ecdd;
-  --ink: #171310;
-  --ink-2: #433c34;
-  --muted: #726a5c;
+  /* muted warm-pastel surfaces */
+  --sand: #e7e0d2;
+  --oat: #efe8da;
+  --paper: #f6f1e7;
+  --ink: #29241f;
+  --ink-2: #4a443b;
+  --muted: #857a6b;
 
-  /* structural rules (solid, print-black) */
-  --line: rgba(23, 19, 16, 0.82);
-  --line-soft: rgba(23, 19, 16, 0.16);
+  /* structural lines (prominent, blueprint-style) */
+  --line: rgba(41, 36, 31, 0.18);
+  --line-soft: rgba(41, 36, 31, 0.1);
 
-  /* section-flag colours */
+  /* pastel accents used as technical colour-coding */
   --clay: #bd7550; /* people   */
   --sage: #869072; /* products */
   --blush: #c1928a; /* food     */
   --sky: #8a9aa1; /* misc     */
   --accent: var(--clay);
 
-  --night: #141210;
+  --night: #221d18;
 
   --rail: 1400px;
 }
@@ -44,11 +44,9 @@
   --color-accent: var(--accent);
   --color-night: var(--night);
 
-  --font-sans: var(--font-caslon-text);
-  --font-display: var(--font-caslon-display);
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-grotesk);
   --font-mono: var(--font-space-mono);
-
-  --radius-none: 0px;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -66,7 +64,7 @@ html {
 body {
   background: var(--sand);
   color: var(--ink);
-  font-family: var(--font-caslon-text), Georgia, serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
 /* Lenis */
@@ -88,21 +86,20 @@ html.lenis body {
 
 /* ---- Type helpers ----------------------------------------------- */
 .font-display {
-  font-family: var(--font-caslon-display), Georgia, serif;
+  font-family: var(--font-display), "Arial Black", sans-serif;
 }
 
 .display-xl {
-  font-family: var(--font-caslon-display), Georgia, serif;
-  font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display), "Arial Black", sans-serif;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
 }
 
-/* monospace UI micro-label — the wire-service / credit-line motif */
+/* monospace UI micro-label — the anime.js "text-ui" motif */
 .ui-label {
   font-family: var(--font-mono), monospace;
   font-size: 0.68rem;
-  font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
@@ -119,7 +116,7 @@ html.lenis body {
   background-size: 100% 1px;
 }
 
-/* ---- Broadsheet framing ------------------------------------------ */
+/* ---- Blueprint framing ------------------------------------------ */
 /* continuous side rails + centered content column */
 .rail {
   width: 100%;
@@ -130,21 +127,32 @@ html.lenis body {
   border-inline: 1px solid var(--line);
 }
 
-/* a printed drop cap for the studio lead paragraph */
-.drop-cap::first-letter {
-  float: left;
-  font-family: var(--font-caslon-display), Georgia, serif;
-  font-size: 4.6em;
-  line-height: 0.82;
-  padding-right: 0.09em;
-  padding-top: 0.03em;
-  color: inherit;
+/* corner registration marks (the technical "+") */
+.reg {
+  position: relative;
+}
+.reg::before,
+.reg::after {
+  content: "+";
+  position: absolute;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: var(--ink);
+  opacity: 0.4;
+}
+.reg::before {
+  top: -0.5rem;
+  left: -0.5rem;
+}
+.reg::after {
+  bottom: -0.5rem;
+  right: -0.5rem;
 }
 
-/* newspaper column rule — a vertical hairline between text columns */
-.col-rule {
-  column-rule: 1px solid var(--line-soft);
-  column-gap: 2.5rem;
+/* blueprint grid removed for a calmer, cleaner look */
+.blueprint {
+  background-image: none;
 }
 
 /* ---- Reveal primitives ------------------------------------------ */
@@ -190,6 +198,12 @@ html.lenis body {
   position: relative;
   overflow: hidden;
   background: var(--oat);
+  background-image: linear-gradient(
+    var(--line-soft) 1px,
+    transparent 1px
+  ),
+  linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 .skeleton::after {
   content: "";
@@ -199,7 +213,7 @@ html.lenis body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(242, 236, 221, 0.65),
+    rgba(246, 241, 231, 0.65),
     transparent
   );
   animation: shimmer 1.6s var(--ease-out-expo) infinite;
@@ -210,19 +224,14 @@ html.lenis body {
   }
 }
 
-/* halftone print texture, in place of the previous soft photo grain */
+/* grain */
 .grain::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 60;
-  opacity: 0.05;
+  opacity: 0.04;
   mix-blend-mode: multiply;
-  background-image: radial-gradient(
-    circle,
-    rgba(23, 19, 16, 0.9) 0.55px,
-    transparent 0.6px
-  );
-  background-size: 3px 3px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
