@@ -51,8 +51,14 @@ export default function WorkRow({
       className="group grid grid-cols-1 items-center gap-6 border-b border-line px-5 py-12 sm:px-7 md:grid-cols-12 md:gap-12"
     >
       <div className={`md:col-span-5 ${index % 2 === 1 ? "md:order-2" : ""}`}>
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
-          {String(index + 1).padStart(2, "0")} — {tagline}
+        <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted">
+          <span
+            className="font-display rounded-md px-2 py-0.5 text-[0.7rem] font-bold tracking-tight text-paper"
+            style={{ background: accent }}
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          {tagline}
         </p>
         <h3
           className="font-display mt-3 text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-none tracking-tight transition-colors duration-300"

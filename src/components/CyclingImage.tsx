@@ -16,6 +16,8 @@ type Props = {
   fit?: "cover" | "contain";
   /** load images eagerly instead of lazily */
   eager?: boolean;
+  /** fires with the active frame index whenever it changes */
+  onIndexChange?: (index: number) => void;
 };
 
 /**
@@ -32,8 +34,14 @@ export default function CyclingImage({
   kenBurns = true,
   fit = "cover",
   eager = false,
+  onIndexChange,
 }: Props) {
   const [i, setI] = useState(0);
+
+  useEffect(() => {
+    onIndexChange?.(i);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i]);
 
   useEffect(() => {
     if (images.length <= 1) return;

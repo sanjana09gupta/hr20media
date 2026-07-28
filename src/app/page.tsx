@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import HighlightsGrid from "@/components/HighlightsGrid";
 import Marquee from "@/components/Marquee";
 import WorkShowcase from "@/components/WorkShowcase";
 import StudioSection from "@/components/StudioSection";
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <Loader />
       <Hero />
+      <HighlightsGrid />
       <Marquee />
       <WorkShowcase />
       <StudioSection />
