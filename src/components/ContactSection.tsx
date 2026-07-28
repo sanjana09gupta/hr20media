@@ -14,6 +14,10 @@ const projectTypes = [
 const field =
   "w-full border border-line bg-paper/60 px-4 py-3 text-ink placeholder:text-muted focus:border-clay focus:outline-none transition-colors";
 
+// +44 7917 364333 — WhatsApp deep links need digits only, no "+" or spaces
+const WHATSAPP_NUMBER = "447917364333";
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
+
 export default function ContactSection() {
   const [sent, setSent] = useState(false);
 
@@ -22,19 +26,26 @@ export default function ContactSection() {
     const data = new FormData(e.currentTarget);
     const get = (k: string) => String(data.get(k) ?? "").trim();
     const name = `${get("firstName")} ${get("lastName")}`.trim();
-    const subject = `New project enquiry — ${get("projectType") || "General"}`;
-    const body = [
+
+    const lines = [
+      "Hi HR20MEDIA, I'd like to enquire about a shoot.",
+      "",
       `Name: ${name}`,
       `Email: ${get("email")}`,
-      `Phone: ${get("phone")}`,
-      `Project type: ${get("projectType")}`,
+    ];
+    if (get("phone")) lines.push(`Phone: ${get("phone")}`);
+    lines.push(
+      `Project type: ${get("projectType") || "Not specified"}`,
       "",
       "Project details:",
-      get("details"),
-    ].join("\n");
-    window.location.href = `mailto:info@hr20media.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
+      get("details")
+    );
+
+    window.open(
+      `${WHATSAPP_LINK}?text=${encodeURIComponent(lines.join("\n"))}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
     setSent(true);
   };
 
@@ -65,6 +76,17 @@ export default function ContactSection() {
               </a>
             </div>
             <div className="bg-oat p-5">
+              <p className="ui-label">WhatsApp</p>
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline mt-2 inline-block font-medium"
+              >
+                +44 7917 364333
+              </a>
+            </div>
+            <div className="bg-oat p-5 sm:col-span-2">
               <p className="ui-label">Studio</p>
               <p className="mt-2 font-medium text-ink">
                 Bournemouth, United Kingdom
@@ -82,13 +104,15 @@ export default function ContactSection() {
                   Thank you.
                 </p>
                 <p className="mt-4 max-w-sm text-muted">
-                  Your email draft is ready in your mail app — hit send and
-                  we&apos;ll be in touch shortly. Prefer to write directly?{" "}
+                  WhatsApp should have opened in a new tab with your enquiry
+                  ready to go — just hit send there. Didn&apos;t open?{" "}
                   <a
-                    href="mailto:info@hr20media.com"
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="link-underline text-ink"
                   >
-                    info@hr20media.com
+                    Message us on WhatsApp
                   </a>
                   .
                 </p>

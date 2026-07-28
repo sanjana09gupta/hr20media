@@ -1,8 +1,14 @@
+"use client";
+
+import { useReducedMotion } from "motion/react";
 import { categories, galleries, type CategorySlug } from "@/lib/gallery";
 import Reveal from "./Reveal";
 import WorkRow from "./WorkRow";
+import WorkStack from "./WorkStack";
 
 export default function WorkShowcase() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section id="work" className="scroll-mt-20">
       <div className="px-5 pb-10 pt-16 sm:px-7 sm:pt-24">
@@ -24,20 +30,24 @@ export default function WorkShowcase() {
         </Reveal>
       </div>
 
-      <div className="border-t border-line">
-        {categories.map((cat, i) => (
-          <WorkRow
-            key={cat.slug}
-            index={i}
-            slug={cat.slug}
-            title={cat.title}
-            tagline={cat.tagline}
-            blurb={cat.blurb}
-            images={galleries[cat.slug as CategorySlug].map((s) => s.src)}
-            accent={cat.accent}
-          />
-        ))}
-      </div>
+      {reduceMotion ? (
+        <div className="border-t border-line">
+          {categories.map((cat, i) => (
+            <WorkRow
+              key={cat.slug}
+              index={i}
+              slug={cat.slug}
+              title={cat.title}
+              tagline={cat.tagline}
+              blurb={cat.blurb}
+              images={galleries[cat.slug as CategorySlug].map((s) => s.src)}
+              accent={cat.accent}
+            />
+          ))}
+        </div>
+      ) : (
+        <WorkStack />
+      )}
     </section>
   );
 }
