@@ -55,7 +55,8 @@ export default function Hero() {
           onIndexChange={setActive}
           className="h-full w-full"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-night/80 via-transparent to-night/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-night/15 to-night/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-night/55 via-night/10 to-transparent" />
       </div>
 
       {/* floating eyebrow chip */}

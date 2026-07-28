@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Baloo_2, Space_Mono } from "next/font/google";
+import { Geist, Archivo, Space_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Header from "@/components/Header";
@@ -11,11 +11,11 @@ const geistSans = Geist({
   display: "swap",
 });
 
-const grotesk = Baloo_2({
+const grotesk = Archivo({
   variable: "--font-grotesk",
   subsets: ["latin"],
   display: "swap",
-  weight: ["500", "600", "700", "800"],
+  weight: ["600", "700", "800", "900"],
 });
 
 const spaceMono = Space_Mono({

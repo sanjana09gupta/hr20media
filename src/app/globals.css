@@ -5,10 +5,10 @@
 /* ------------------------------------------------------------------ */
 
 :root {
-  /* dreamy pastel accents, kept on a neutral (not blue) surface */
-  --sand: #ececea;
-  --oat: #eeeeec;
-  --paper: #f5f5f5;
+  /* light-brown/cream surfaces, dreamy pastel accents */
+  --sand: #f0dfcb;
+  --oat: #efe4d3;
+  --paper: #fff1e7;
   --ink: #35627a;
   --ink-2: #4f7791;
   --muted: #7c93a0;
@@ -86,14 +86,14 @@ html.lenis body {
 
 /* ---- Type helpers ----------------------------------------------- */
 .font-display {
-  font-family: var(--font-display), ui-rounded, "Segoe UI", sans-serif;
+  font-family: var(--font-display), "Helvetica Neue", Arial, sans-serif;
 }
 
 .display-xl {
-  font-family: var(--font-display), ui-rounded, "Segoe UI", sans-serif;
+  font-family: var(--font-display), "Helvetica Neue", Arial, sans-serif;
   font-weight: 800;
-  line-height: 0.92;
-  letter-spacing: -0.01em;
+  line-height: 0.9;
+  letter-spacing: -0.025em;
 }
 
 /* monospace UI micro-label — the anime.js "text-ui" motif */
