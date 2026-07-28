@@ -29,6 +29,9 @@ const recentShots = [
   galleries.people[21],
 ];
 
+// secondary detail reel for the floating corner tile
+const detailReel = [galleries.products[2].src, galleries.food[3].src, galleries.products[9].src];
+
 const quickLinks = [
   { label: "Portraits", href: "/work/people" },
   { label: "Products", href: "/work/products" },
@@ -80,17 +83,37 @@ export default function Hero() {
         <span className="h-1 w-1 rounded-full bg-paper/70" />
       </motion.div>
 
-      {/* floating detail chip */}
+      {/* floating detail tile — a second, smaller reel */}
       <motion.div
-        initial={{ opacity: 0, x: 16 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.4, ease }}
-        className="absolute right-6 top-1/3 z-10 hidden lg:block"
+        initial={{ opacity: 0, x: 24, y: -10 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.4, ease }}
+        className="absolute right-6 top-[26%] z-10 hidden w-[13rem] lg:block xl:w-[15rem]"
       >
-        <span className="inline-flex items-center gap-2 rounded-full border border-paper/20 bg-night/30 px-4 py-2 text-[0.72rem] font-medium text-paper/85 backdrop-blur-md">
+        <div className="overflow-hidden rounded-[1.75rem] border border-paper/20 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.6)]">
+          <CyclingImage
+            images={detailReel}
+            interval={3600}
+            fit="contain"
+            kenBurns={false}
+            sizes="15rem"
+            className="aspect-[4/3] w-full bg-night/60"
+          />
+        </div>
+        <span className="mt-3 inline-flex items-center gap-2 rounded-full border border-paper/20 bg-night/30 px-4 py-2 text-[0.72rem] font-medium text-paper/85 backdrop-blur-md">
           Studio &amp; on-location
         </span>
       </motion.div>
+
+      {/* decorative stripe texture, left edge */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-0 z-[1] hidden w-24 opacity-[0.07] lg:block"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(90deg, var(--paper) 0px, var(--paper) 2px, transparent 2px, transparent 14px)",
+        }}
+      />
 
       {/* frame index dots, synced to the cycling reel */}
       <div className="absolute bottom-14 right-5 z-10 hidden items-center gap-1.5 sm:flex sm:right-7">
@@ -131,7 +154,17 @@ export default function Hero() {
             on-location shooting and precision post — for premium,
             high-definition imagery.
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-3">
+            <Magnetic strength={0.5}>
+              <Link
+                href="/#work"
+                aria-hidden
+                tabIndex={-1}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-paper/30 text-paper transition-colors duration-300 hover:border-paper hover:bg-paper hover:text-ink"
+              >
+                ↗
+              </Link>
+            </Magnetic>
             <Magnetic strength={0.4}>
               <Link
                 href="/#work"

@@ -30,16 +30,14 @@ export default function ContactSection() {
     const lines = [
       "Hi HR20MEDIA, I'd like to enquire about a shoot.",
       "",
-      `Name: ${name}`,
-      `Email: ${get("email")}`,
-    ];
-    if (get("phone")) lines.push(`Phone: ${get("phone")}`);
-    lines.push(
-      `Project type: ${get("projectType") || "Not specified"}`,
+      `*Name:* ${name}`,
+      `*Email:* ${get("email")}`,
+      `*Phone:* ${get("phone") || "—"}`,
+      `*Project type:* ${get("projectType") || "Not specified"}`,
       "",
-      "Project details:",
-      get("details")
-    );
+      "*Project details:*",
+      get("details"),
+    ];
 
     window.open(
       `${WHATSAPP_LINK}?text=${encodeURIComponent(lines.join("\n"))}`,

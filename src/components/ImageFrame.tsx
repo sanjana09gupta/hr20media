@@ -51,7 +51,7 @@ export default function ImageFrame({
           sizes={sizes}
           priority={priority}
           onLoad={() => setLoaded(true)}
-          className={`object-cover transition-[opacity,transform] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`object-contain transition-[opacity,transform] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             loaded ? "scale-100 opacity-100" : "scale-105 opacity-0"
           }`}
         />

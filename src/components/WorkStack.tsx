@@ -152,7 +152,7 @@ function Panel({
             images={galleries[cat.slug as CategorySlug].map((s) => s.src)}
             interval={3200 + index * 400}
             eager
-            fit="cover"
+            fit="contain"
             kenBurns={false}
             sizes="(max-width: 768px) 100vw, 58vw"
             className="aspect-[4/3] w-full rounded-[2rem] bg-oat sm:rounded-[2.5rem]"
