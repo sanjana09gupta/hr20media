@@ -57,9 +57,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+      <header className="fixed inset-x-0 top-0 z-50 px-3 sm:px-5">
         <div
-          className={`rail flex h-[60px] items-center justify-between gap-4 rounded-full border px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-colors duration-500 sm:h-[64px] sm:px-5 ${
+          className={`rail flex h-[60px] items-center justify-between gap-4 rounded-b-[1.75rem] border border-t-0 px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-colors duration-500 sm:h-[64px] sm:rounded-b-[2.25rem] sm:px-5 ${
             overHero
               ? "border-paper/15 bg-night/80 text-paper"
               : "border-line bg-paper/90 text-ink"
