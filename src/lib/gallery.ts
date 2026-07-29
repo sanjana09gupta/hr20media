@@ -728,12 +728,6 @@ export const galleries = {
       "w": 1280,
       "h": 853,
       "alt": "Products photography 24"
-    },
-    {
-      "src": "/images/products/products-25.jpg",
-      "w": 1280,
-      "h": 1280,
-      "alt": "Products photography 25"
     }
   ],
   "food": [
