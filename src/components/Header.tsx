@@ -59,10 +59,10 @@ export default function Header() {
     <>
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
         <div
-          className={`rail flex h-[60px] items-center justify-between gap-4 rounded-full px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.35)] transition-colors duration-500 sm:h-[64px] sm:px-5 ${
+          className={`rail flex h-[60px] items-center justify-between gap-4 rounded-full border px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-colors duration-500 sm:h-[64px] sm:px-5 ${
             overHero
-              ? "bg-night text-paper"
-              : "border border-line bg-paper text-ink"
+              ? "border-paper/15 bg-night/80 text-paper"
+              : "border-line bg-paper/90 text-ink"
           }`}
         >
           <Link href="/" aria-label="HR20MEDIA home" className="flex items-center gap-2.5">
