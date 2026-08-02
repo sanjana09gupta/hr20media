@@ -68,7 +68,7 @@ export default function Hero() {
       >
         <span className="inline-flex items-center gap-2 rounded-full border border-paper/25 bg-paper/10 px-4 py-2 text-[0.68rem] font-medium uppercase tracking-[0.2em] text-paper/85 backdrop-blur-md">
           <span className="h-1.5 w-1.5 rounded-full bg-clay" />
-          Commercial Photography — Bournemouth, UK
+          Commercial Photography — HQ London, UK
         </span>
       </motion.div>
 

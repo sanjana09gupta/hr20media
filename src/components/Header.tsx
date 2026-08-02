@@ -1,11 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Magnetic from "./Magnetic";
 import AnimatedBackground from "./AnimatedBackground";
+import TeamBar from "./TeamBar";
+import logo from "@/app/icon.jpg";
 
 const nav = [
   { label: "People", href: "/work/people" },
@@ -13,23 +16,6 @@ const nav = [
   { label: "Food & Bev", href: "/work/food" },
   { label: "Studio", href: "/#studio" },
 ];
-
-function ApertureMark() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      className="h-4 w-4"
-    >
-      <circle cx="12" cy="12" r="7.5" />
-      <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
-      <path d="M12 4v2.4M12 17.6V20M20 12h-2.4M6.4 12H4M17.3 6.7l-1.7 1.7M8.4 15.6l-1.7 1.7M17.3 17.3l-1.7-1.7M8.4 8.4 6.7 6.7" />
-    </svg>
-  );
-}
 
 export default function Header() {
   const pathname = usePathname();
@@ -57,7 +43,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 px-3 sm:px-5">
+      <header className="fixed inset-x-0 top-0 z-50">
+        <TeamBar />
+        <div className="px-3 sm:px-5">
         <div
           className={`rail flex h-[60px] items-center justify-between gap-4 rounded-b-[1.75rem] border border-t-0 px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-colors duration-500 sm:h-[64px] sm:rounded-b-[2.25rem] sm:px-5 ${
             overHero
@@ -66,13 +54,12 @@ export default function Header() {
           }`}
         >
           <Link href="/" aria-label="HR20MEDIA home" className="flex items-center gap-2.5">
-            <span
-              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-clay transition-colors duration-500 ${
-                overHero ? "bg-paper" : "bg-oat"
-              }`}
-            >
-              <ApertureMark />
-            </span>
+            <Image
+              src={logo}
+              alt="HR20MEDIA"
+              className="h-9 w-9 shrink-0 rounded-xl object-contain"
+              priority
+            />
             <span className="font-display text-[1.15rem] font-bold leading-none tracking-tight">
               HR20<span className="text-clay">MEDIA</span>
             </span>
@@ -144,6 +131,7 @@ export default function Header() {
               }`}
             />
           </button>
+        </div>
         </div>
       </header>
 

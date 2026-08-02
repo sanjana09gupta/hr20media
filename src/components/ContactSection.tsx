@@ -18,21 +18,6 @@ const field =
 const WHATSAPP_NUMBER = "447917364333";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
-const team = [
-  {
-    name: "Sahil Kalash",
-    role: "Managing Director",
-    phone: "+44 7917 364333",
-    tel: "+447917364333",
-  },
-  {
-    name: "Mohit Prasad",
-    role: "Head of Partnerships",
-    phone: "077380866528",
-    tel: "077380866528",
-  },
-];
-
 export default function ContactSection() {
   const [sent, setSent] = useState(false);
 
@@ -99,38 +84,13 @@ export default function ContactSection() {
                 +44 7917 364333
               </a>
             </div>
-            <div className="bg-oat p-5">
+            <div className="bg-oat p-5 sm:col-span-2">
               <p className="ui-label">HQ</p>
               <p className="mt-2 font-medium text-ink">London, United Kingdom</p>
-            </div>
-            <div className="bg-oat p-5">
-              <p className="ui-label">Branches</p>
-              <p className="mt-2 font-medium text-ink">Bournemouth · Leicester</p>
             </div>
             <div className="bg-oat p-5 sm:col-span-2">
               <p className="ui-label">Business hours</p>
               <p className="mt-2 font-medium text-ink">9:00 am – 10:30 pm</p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={160} className="mt-8">
-            <p className="ui-label mb-3">Our team</p>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {team.map((person) => (
-                <a
-                  key={person.name}
-                  href={`tel:${person.tel}`}
-                  className="block rounded-2xl border border-line bg-paper/60 p-4 transition-colors duration-300 hover:border-clay"
-                >
-                  <p className="font-display text-base font-bold tracking-tight text-ink">
-                    {person.name}
-                  </p>
-                  <p className="mt-0.5 text-xs font-medium uppercase tracking-[0.15em] text-clay">
-                    {person.role}
-                  </p>
-                  <p className="mt-2 text-sm text-muted">{person.phone}</p>
-                </a>
-              ))}
             </div>
           </Reveal>
         </div>
