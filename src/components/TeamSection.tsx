@@ -9,7 +9,7 @@ const team = [
   },
   {
     name: "Mohit Prasad",
-    role: "ED",
+    role: "Executive Director",
     phone: "077380866528",
     tel: "077380866528",
   },
