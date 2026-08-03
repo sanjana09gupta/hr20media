@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const team = [
   { name: "Sahil Kalash", role: "MD", phone: "+44 7917 364333", tel: "+447917364333" },
-  { name: "Mohit Prasad", role: "Partnerships", phone: "077380866528", tel: "077380866528" },
+  { name: "Mohit Prasad", role: "ED", phone: "077380866528", tel: "077380866528" },
 ];
 
 function PhoneIcon() {
